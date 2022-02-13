@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="shift_jis"?>
+<xs:schema xmlns="http://tempuri.org/TR" elementFormDefault="qualified" targetNamespace="http://tempuri.org/TR" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="TM-REG-GAZ">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="PUBLICATION-COUNTRY">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="PUBLICATION-DATE">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="KIND-OF-OFFICIAL-GAZETTE">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="REGISTRATION-NUMBER">
+    <xs:complexType>
+      <xs:attribute name="KIND-OF-REGISTRATION-NUMBER">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="REGISTRATION" />
+            <xs:enumeration value="DIVISION" />
+            <xs:enumeration value="PROTECTION" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="REGISTRATION-DATE">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="REPLACED-REGISTRATION-DATE">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="TRADEMARK">
+    <xs:complexType>
+      <xs:attribute name="KIND-OF-TRADEMARK">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRADEMARK" />
+            <xs:enumeration value="DEFENSIVE-MARK" />
+            <xs:enumeration value="CHARACTER" />
+            <xs:enumeration value="DEFENSIVE-CHARACTER" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="COLLECTIVE-TRADEMARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="COLLECTIVE-TRADEMARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="REGIONAL-TRADEMARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="REGIONAL-TRADEMARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TD-TRADEMARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="TD-TRADEMARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TD-DEFENSIVE-MARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="TD-DEFENSIVE-MARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MOTION-TRADEMARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="MOTION-TRADEMARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MOTION-DEFENSIVE-MARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="MOTION-DEFENSIVE-MARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HOLOGRAM-TRADEMARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="HOLOGRAM-TRADEMARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HOLOGRAM-DEFENSIVE-MARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="HOLOGRAM-DEFENSIVE-MARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="COLOR-TRADEMARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="COLOR-TRADEMARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="COLOR-DEFENSIVE-MARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="COLOR-DEFENSIVE-MARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SOUND-TRADEMARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="SOUND-TRADEMARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SOUND-DEFENSIVE-MARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="SOUND-DEFENSIVE-MARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="POSITION-TRADEMARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="POSITION-TRADEMARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="POSITION-DEFENSIVE-MARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="POSITION-DEFENSIVE-MARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OTHER-TRADEMARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="OTHER-TRADEMARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OTHER-DEFENSIVE-MARK-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="OTHER-DEFENSIVE-MARK-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DETAIL-EXPLANATION-OF-THE-TRADEMARK">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="DETAIL-EXPLANATION-OF-THE-DEFENSIVE-MARK">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="SOUND-FILE">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="SOUND">
+    <xs:complexType>
+      <xs:attribute name="FILE-NAME" type="xs:ENTITY" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NUMBER-OF-GOODS-SERVICE-CLASS">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="CLASS-OF-GOODS-AND-SERVICE">
+    <xs:complexType>
+      <xs:attribute name="CLASSIFICATION">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="JAPANESE" />
+            <xs:enumeration value="INTERNATIONAL" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BEFORE-REPLACED-CLASS-OF-GOODS">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="NUMBER-OF-REPLACED-GOODS-CLASS">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="REPLACED-CLASS-OF-GOODS">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="VERSION-OF-NICE-CLASS">
+    <xs:complexType>
+      <xs:attribute name="VERSION" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NICE-CLASS">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="APPLICATION-NUMBER">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="FILING-DATE">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="REPLACED-APPLICATION-NUMBER">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="REPLACED-APPLICATION-DATE">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="SPECIAL-APPLICATION-INDICATION">
+    <xs:complexType>
+      <xs:attribute name="KIND-OF-APPLICATION-INDICATION">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="DIVISION" />
+            <xs:enumeration value="CHANGE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="INTER-REG-CHANGE-INDICATION">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="APPEAL-NUMBER">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="APPEAL-DATE">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="PARIS-PRIORITY-CLAIM-ARTICLE">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="RIGHT-HOLDER-GROUP">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="TRADEMARK-LAW-SEC-3-2-APPLIED">
+    <xs:complexType>
+      <xs:attribute name="TRADEMARK-LAW-SEC-3-2-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRADEMARK-LAW-SEC-9-1-APPLIED">
+    <xs:complexType>
+      <xs:attribute name="TRADEMARK-LAW-SEC-9-1-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRADEMARK-LAW-SEC-5-4-APPLIED">
+    <xs:complexType>
+      <xs:attribute name="TRADEMARK-LAW-SEC-5-4-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRADEMARK-LAW-SEC-68-32-1-APPLIED">
+    <xs:complexType>
+      <xs:attribute name="TRADEMARK-LAW-SEC-68-32-1-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRADEMARK-LAW-SEC-68-33-1-APPLIED">
+    <xs:complexType>
+      <xs:attribute name="TRADEMARK-LAW-SEC-68-33-1-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRADEMARK-LAW-SEC-68-37-APPLIED">
+    <xs:complexType>
+      <xs:attribute name="TRADEMARK-LAW-SEC-68-37-FLAG">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="TRUE" />
+            <xs:enumeration value="FALSE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="COLOR-INDICATION">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="OBJECT-APPLICATION">
+    <xs:complexType>
+      <xs:attribute name="KIND-OF-OBJECT-APPLICATION">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="ACCELERATED-EXAM" />
+            <xs:enumeration value="ACCELERATED-APPEAL-EXAM" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SPECIAL-TRADEMARK">
+    <xs:complexType>
+      <xs:attribute name="KIND-OF-SPECIAL-TRADEMARK">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="SPECIAL-PROVISION-TRADEMARK" />
+            <xs:enumeration value="OVERLAP-TRADEMARK" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OVERLAPPED-OTHER-APPLICATION">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="OVERLAPPED-OTHER-REGISTRATION">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="OVERLAPPED-OTHER-APPLICATION-REF">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="DISTINCTION-OF-THE-LAW">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="EXAMINER-GROUP">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="APPEAL-EXAMINER-GROUP">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="PRONUNCIATION">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="TRADEMARK-FOR-INDICATION">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="SIMILAR-GROUP-CODE-GROUP">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="VIENNA-FIGURE-CLASSIFICATION">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="IMAGE">
+    <xs:complexType>
+      <xs:attribute name="HEIGHT" type="xs:string" use="required" />
+      <xs:attribute name="WIDTH" type="xs:string" use="required" />
+      <xs:attribute name="FILE-NAME" type="xs:ENTITY" use="required" />
+      <xs:attribute name="FILE-ID" type="xs:string" />
+      <xs:attribute name="ORIGINAL-FILE-NAME" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CHARACTER">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="GOODS-AND-SERVICE-CLASS-GROUP">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="PARIS-PRIORITY-GROUP">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="RIGHT-HOLDER">
+    <xs:complexType>
+      <xs:attribute name="KIND-OF-RIGHT-HOLDER">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="RIGHT-HOLDER" />
+            <xs:enumeration value="APPLICANT" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PROXY">
+    <xs:complexType>
+      <xs:attribute name="KIND-OF-ATTORNEY" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="REPRESENTATIVE" />
+            <xs:enumeration value="SUB-REPRESENTATIVE" />
+            <xs:enumeration value="LEGAL-REPRESENTATIVE" />
+            <xs:enumeration value="DESIGNATED-REPRESENTATIVE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EXAMINER">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="APPEAL-EXAMINER-IN-CHIEF">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="APPEAL-EXAMINER">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="SIMILAR-GROUP">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="CLASS">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="GOODS-AND-SERVICE">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="NATION">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="IDENTIFICATION-NUMBER">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="NAME">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="ORIGINAL-NAME">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="ADDRESS">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="ORIGINAL-ADDRESS">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="ATTORNEY-RIGHT">
+    <xs:complexType>
+      <xs:attribute name="KIND-OF-ATTORNEY-RIGHT">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="PATENT-ATTORNEY" />
+            <xs:enumeration value="ATTORNEY-AT-LAW" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OFFICIAL-TITLE">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="SIMILAR-GROUP-CLASSIFICATION">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="SIMILAR-GROUP-CODE">
+    <xs:complexType />
+  </xs:element>
+</xs:schema>

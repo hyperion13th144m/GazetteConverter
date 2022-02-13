@@ -147,7 +147,7 @@
           <xsl:with-param name="category" select="'Sound'"/>
         </xsl:call-template>
       </xsl:when>
-      <xsl:when test="HOLOGRAM-DEFENSIVE-MARK-INDICATION[@HOLOGRAM-DEFENSIVE-MARK-FLAG='TRUE']">
+      <xsl:when test="HOLOGRAM-TRADEMARK-INDICATION[@HOLOGRAM-TRADEMARK-FLAG='TRUE']">
         <!--ホログラム商標-->
         <xsl:call-template name="_MarkFeatureCategory">
           <xsl:with-param name="category" select="'Hologram'"/>

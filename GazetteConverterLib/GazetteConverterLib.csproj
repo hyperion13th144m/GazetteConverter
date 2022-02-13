@@ -12,10 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="test\6481006.IMG">
+    <None Update="test\CHARACTER(6481006).IMG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="test\6481006.SGM">
+    <None Update="test\CHARACTER(6481006).SGM">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="xslt\JPRegisteredTrademarkPublication.xslt">
