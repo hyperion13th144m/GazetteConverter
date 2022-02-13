@@ -12,6 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="test\6481006.IMG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="test\6481006.SGM">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="xslt\JPRegisteredTrademarkPublication.xslt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

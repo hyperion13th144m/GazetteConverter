@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:jptmk="http://www.jpo.go.jp/standards/XMLSchema/ST96/JPTrademark" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tmk="http://www.wipo.int/standards/XMLSchema/ST96/Trademark" xmlns:com="http://www.wipo.int/standards/XMLSchema/ST96/Common" xmlns:jpcom="http://www.jpo.go.jp/standards/XMLSchema/ST96/JPCommon" targetNamespace="http://www.jpo.go.jp/standards/XMLSchema/ST96/JPTrademark" elementFormDefault="qualified" attributeFormDefault="qualified" version="V1_0">
+	<xsd:import namespace="http://www.wipo.int/standards/XMLSchema/ST96/Common" schemaLocation="Common_V3_1.xsd"/>
+	<xsd:import namespace="http://www.wipo.int/standards/XMLSchema/ST96/Trademark" schemaLocation="TrademarkTransaction_V3_1.xsd"/>
+	<xsd:import namespace="http://www.jpo.go.jp/standards/XMLSchema/ST96/JPCommon" schemaLocation="JPCommon_V1_0.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<com:SchemaCreatedDate>2022-01-04</com:SchemaCreatedDate>
+			<com:SchemaLastModifiedDate>2022-01-04</com:SchemaLastModifiedDate>
+			<com:SchemaContactPoint>PA0620@jpo.go.jp</com:SchemaContactPoint>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:element name="RegisteredTrademarkPublication" type="jptmk:RegisteredTrademarkPublicationType"/>
+	<xsd:complexType name="RegisteredTrademarkPublicationType">
+		<xsd:sequence>
+			<xsd:element ref="jptmk:Publication"/>
+			<xsd:element ref="jptmk:PlainLanguageDesignationText"/>
+			<xsd:element ref="tmk:NationalMarkRegistrationDate" minOccurs="0"/>
+			<xsd:element ref="jptmk:MarkRepresentation" minOccurs="0"/>
+			<xsd:element ref="jptmk:GoodsServiceClassNumber" minOccurs="0"/>
+			<xsd:element ref="jptmk:GoodsServices" minOccurs="0"/>
+			<xsd:element ref="com:ClassificationVersion" minOccurs="0"/>
+			<xsd:element ref="jptmk:NiceClassNumberText" minOccurs="0"/>
+			<xsd:element ref="com:ApplicationNumber" minOccurs="0"/>
+			<xsd:element ref="jptmk:NationalApplicationFilingDateBag"/>
+			<xsd:element ref="jptmk:SpecialApplicationIndication" minOccurs="0"/>
+			<xsd:element ref="jptmk:AppealNumber" minOccurs="0"/>
+			<xsd:element ref="jptmk:AppealDate" minOccurs="0"/>
+			<xsd:element ref="jptmk:PriorityBag" minOccurs="0"/>
+			<xsd:element ref="jptmk:HolderRepresentativeBag"/>
+			<xsd:element ref="jptmk:RecognizableGoodsService" minOccurs="0"/>
+			<xsd:element ref="jptmk:SpecialProvisionConcerningApplicationFilingTime" minOccurs="0"/>
+			<xsd:element ref="jptmk:ColorProvision" minOccurs="0"/>
+			<xsd:element ref="jptmk:RegistrationRescindException" minOccurs="0"/>
+			<xsd:element ref="jptmk:ProtocolDenunciationException" minOccurs="0"/>
+			<xsd:element ref="jptmk:SpecialProvisionConcerningOppositionRegistration" minOccurs="0"/>
+			<xsd:element ref="jptmk:ColorIndicationText" minOccurs="0"/>
+			<xsd:element ref="com:RequestExaminationCategory" minOccurs="0"/>
+			<xsd:element ref="jptmk:RequestAppealTrialExaminationCategory" minOccurs="0"/>
+			<xsd:element ref="jptmk:SpecialTrademark" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="jptmk:OverlappedOtherApplication" minOccurs="0"/>
+			<xsd:element ref="jptmk:OverlappedOtherRegistration" minOccurs="0"/>
+			<xsd:element ref="jptmk:OverlappedOtherApplicationReference" minOccurs="0"/>
+			<xsd:element ref="jptmk:DistinctionLaw"/>
+			<xsd:element ref="jptmk:ExaminerBag" minOccurs="0"/>
+			<xsd:element ref="jptmk:AppealExaminerBag" minOccurs="0"/>
+			<xsd:element ref="jptmk:Pronunciation" minOccurs="0"/>
+			<xsd:element ref="tmk:PseudoMarkText" minOccurs="0"/>
+			<xsd:element ref="jptmk:SimilarGroupBag" minOccurs="0"/>
+			<xsd:element ref="jptmk:ViennaFigureClassificationText" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute ref="com:languageCode" use="required"/>
+		<xsd:attribute ref="com:st96Version" use="required"/>
+		<xsd:attribute ref="com:ipoVersion" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="AppealDate" type="com:DateType"/>
+	<xsd:element name="AppealExaminer" type="jptmk:AppealExaminerType"/>
+	<xsd:element name="AppealExaminerBag" type="jptmk:AppealExaminerBagType"/>
+	<xsd:complexType name="AppealExaminerBagType">
+		<xsd:sequence>
+			<xsd:element ref="jptmk:ChiefAppealExaminer" minOccurs="0"/>
+			<xsd:element ref="jptmk:AppealExaminer" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AppealExaminerType">
+		<xsd:sequence>
+			<xsd:element ref="com:Name" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="AppealNumber" type="xsd:string"/>
+	<xsd:complexType name="ApplicantType">
+		<xsd:complexContent>
+			<xsd:extension base="jpcom:LegalEntityType">
+				<xsd:sequence>
+					<xsd:element ref="tmk:AssignmentConveyanceCategory" minOccurs="0"/>
+					<xsd:element ref="tmk:AssignmentIdentifier" minOccurs="0"/>
+					<xsd:element ref="com:CommentText" minOccurs="0"/>
+					<xsd:element ref="tmk:Entitlement" minOccurs="0"/>
+					<xsd:element ref="com:Version" minOccurs="0"/>
+					<xsd:choice maxOccurs="unbounded">
+						<xsd:element ref="com:PartyIdentifier"/>
+						<xsd:element ref="jpcom:Contact"/>
+						<xsd:element ref="com:PublicationContact"/>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute ref="com:operationCategory"/>
+				<xsd:attribute ref="com:sequenceNumber"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="ArticleContentText" type="xsd:string"/>
+	<xsd:element name="ArticleNameText" type="xsd:string"/>
+	<xsd:complexType name="ArticleType">
+		<xsd:sequence>
+			<xsd:element ref="jptmk:ArticleNameText" minOccurs="0"/>
+			<xsd:element ref="jptmk:ArticleContentText" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ChiefAppealExaminer" type="jptmk:ChiefAppealExaminerType"/>
+	<xsd:complexType name="ChiefAppealExaminerType">
+		<xsd:sequence>
+			<xsd:element ref="com:Name" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ClassDescription" type="jptmk:ClassDescriptionType">
+		<xsd:annotation>
+			<xsd:documentation>Details of one Goods and Services class and description</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ClassDescriptionBag" type="jptmk:ClassDescriptionBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of Goods and Services classes and descriptions</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ClassDescriptionBagType">
+		<xsd:sequence>
+			<xsd:element ref="jptmk:ClassDescription" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ClassDescriptionType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:ClassNumber" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassNumberStatusCategory" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalStatusBag" minOccurs="0"/>
+			<xsd:element ref="tmk:GoodsServicesDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="tmk:UseNiceHeadingIndicator" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassificationTermBag" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ColorIndicationText" type="xsd:string"/>
+	<xsd:element name="ColorProvision" type="jptmk:ArticleType"/>
+	<xsd:element name="DistinctionLaw" type="xsd:string"/>
+	<xsd:element name="Examiner" type="jptmk:ExaminerType"/>
+	<xsd:element name="ExaminerBag" type="jptmk:ExaminerBagType"/>
+	<xsd:complexType name="ExaminerBagType">
+		<xsd:sequence>
+			<xsd:element ref="jptmk:Examiner"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ExaminerType">
+		<xsd:sequence>
+			<xsd:element ref="com:Name"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="GoodsServiceClassNumber" type="xsd:string"/>
+	<xsd:element name="GoodsServices" type="jptmk:GoodsServicesType">
+		<xsd:annotation>
+			<xsd:documentation>Goods and Services</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="GoodsServicesType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:GoodsServicesClassificationBag" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalGoodsServices" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalFilingBasis" minOccurs="0"/>
+			<xsd:element ref="tmk:ClassificationKindCode" minOccurs="0"/>
+			<xsd:element ref="com:ClassificationVersion" minOccurs="0"/>
+			<xsd:element ref="com:CommentText" minOccurs="0"/>
+			<xsd:element ref="tmk:ProposedLeadingClassNumber" minOccurs="0"/>
+			<xsd:element ref="jptmk:ClassDescriptionBag" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="Holder" type="jptmk:ApplicantType">
+		<xsd:annotation>
+			<xsd:documentation>Data regarding the holder of the trade mark</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="HolderRepresentativeBag" type="jptmk:HolderRepresentativeBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of the mark Holders</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="HolderRepresentativeBagType">
+		<xsd:choice maxOccurs="unbounded">
+			<xsd:element ref="jptmk:Holder"/>
+			<xsd:element ref="jpcom:Representative"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:element name="MarkCategory" type="jptmk:MarkCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category of mark</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:simpleType name="MarkCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Mark">
+				<xsd:annotation>
+					<xsd:documentation> Any sign or combination of signs, capable of distinguishing the goods or services of one undertaking from those of other undertakings. This can include a trademark, service mark, collective trademark, collective service mark, or certification mark.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Trademark">
+				<xsd:annotation>
+					<xsd:documentation> Any sign or combination of signs, capable of distinguishing the goods of one undertaking from those of other undertakings.  Sometimes the term “trademark Eis also used as a synonym of the term “mark Eand thus referring to both goods and/or services.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Service mark">
+				<xsd:annotation>
+					<xsd:documentation>Any sign or combination of signs, capable of distinguishing the services of one undertaking from those of other undertakings.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Defensive mark">
+				<xsd:annotation>
+					<xsd:documentation>A mark may be registered as a defensive mark, in some jurisdictions, typically for protection of well-known registered marks. Where a registered mark has become well-known among the consumers for the goods and/or services covered, its holder may obtain registration of the same mark for other goods and/or services even where, in respect of those latter goods and/or services, the mark is not used or is not intended to be used.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Individual mark">
+				<xsd:annotation>
+					<xsd:documentation>The individual mark is the opposite of the collective mark. An individual mark may sometimes be wrongly called an ordinary mark or a standard mark.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Collective mark">
+				<xsd:annotation>
+					<xsd:documentation>Any trademark or service mark that is used by members of a collective organization (such as a cooperative, an association or a federation of industries, producers or traders) and that distinguishes the goods and/or services of the members of that collective organization from those of non-members.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Collective trademark">
+				<xsd:annotation>
+					<xsd:documentation>A sub-type of collective mark that is used by members of a collective organization (such as a cooperative, an association or a federation of industries, producers or traders) and that distinguishes the goods of the members of that collective organization from those of non-members.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Collective service mark">
+				<xsd:annotation>
+					<xsd:documentation>A sub-type of collective mark that is used by members of a collective organization (such as a cooperative, an association or a federation of industries, producers or traders) and that distinguishes the services of the members of that collective organization from those of non-members.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Collective membership mark">
+				<xsd:annotation>
+					<xsd:documentation>A sub-type of collective mark that is used only to indicate membership in the collective organization. It is not used to identify and distinguish any goods or services of one undertaking from those of other undertakings.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Certification mark">
+				<xsd:annotation>
+					<xsd:documentation>Any mark used by a person other than its owner to certify regional or other origin, material, mode of manufacture, quality, accuracy, or other characteristics of such person’s goods or services or that the work or labor on the goods or services was performed by members of a union or other organization. It distinguishes goods or services certified by the proprietor of the certification mark, guarantee mark or standardization mark from the goods and services of other undertakings.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Well known mark under TRIPS Article 16_2">
+				<xsd:annotation>
+					<xsd:documentation>Any mark that is well known to the relevant sector of the public on identical or similar goods and services for which registration or use is sought pursuant to the TRIPS Agreement and the Paris Convention.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Well known mark under TRIPS Article 16_3">
+				<xsd:annotation>
+					<xsd:documentation>Any mark that is well known to the relevant sector of the public on dissimilar goods and services for which registration or use is sought pursuant to the TRIPS Agreement and the Paris Convention.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Well known collective mark">
+				<xsd:annotation>
+					<xsd:documentation>Well known collective mark</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Word">
+			</xsd:enumeration>
+			<xsd:enumeration value="Defensive word">
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="MarkDescriptionBag" type="jptmk:MarkDescriptionBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of mark descriptions</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="MarkDescriptionBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:MarkDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="tmk:MarkDescriptionImage" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="tmk:NationalMarkDescription" minOccurs="0"/>
+			<xsd:element ref="jptmk:MarkDescriptionTranslationText" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="MarkDescriptionTranslationText" type="xsd:string"/>
+	<xsd:element name="MarkFeatureCategory" type="jptmk:MarkFeatureCategoryType">
+		<xsd:annotation>
+			<xsd:documentation>Category of mark feature</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:simpleType name="MarkFeatureCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Word">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of letters, words, numerals and/or other punctuation or diacritical characters commonly found in standard style</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Stylized characters">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of letters, words and/or numerals comprised of special characteristics such as style(s) of lettering, or unusual form(s) of punctuation</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Figurative">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of two-dimensional figures such as pictures, images and drawings without letters or words and/or numerals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Combined">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of more than one mark feature, e.g. “word E “figurative element Eand/or “colour Eas claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Three dimensional">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of a three-dimensional object as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Colour">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting exclusively of a colour or a combination of colours without any figurative element as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Sound">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of audio rather than visual means to distinguish a product or service, and claimed as such in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Hologram">
+				<xsd:annotation>
+					<xsd:documentation>A mark that consists of or contains a hologram as part of its distinctive features as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Olfactory">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of a distinctive smell, scent or odour of a product or used in relation to services and as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Motion">
+				<xsd:annotation>
+					<xsd:documentation>A mark depicting motion or movement as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Multimedia">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of the combination of movement and sound claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Position">
+				<xsd:annotation>
+					<xsd:documentation>A mark which consists of the manner in which the sign is placed or laid out on the product as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Touch">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of the distinctive texture of a product as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Taste">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of the distinctive taste of a product as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Tracer">
+				<xsd:annotation>
+					<xsd:documentation>A mark consisting of a certain symbol or combination, mixture or pattern of colours that runs lengthwise through the product which is usually sold by cutting off a portion from a roll/bale etc. as claimed in a statement contained in the application. For example, coloured thread running through cables and patterns running the length of ropes.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Other">
+				<xsd:annotation>
+					<xsd:documentation>Any other type of mark as claimed in a statement contained in the application</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Collective">
+			</xsd:enumeration>
+			<xsd:enumeration value="Regional">
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="MarkRepresentation" type="jptmk:MarkRepresentationType">
+		<xsd:annotation>
+			<xsd:documentation>Information about the representation of the mark itself.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="MarkRepresentationType">
+		<xsd:sequence>
+			<xsd:element ref="jptmk:MarkFeatureCategory" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="jptmk:MarkReproduction"/>
+			<xsd:element ref="jptmk:MarkDescriptionBag" minOccurs="0"/>
+			<xsd:element ref="jptmk:OptionalMarkDescriptionBag" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="MarkReproduction" type="jptmk:MarkReproductionType">
+		<xsd:annotation>
+			<xsd:documentation>Reproduction of the mark </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="MarkReproductionType">
+		<xsd:sequence>
+			<xsd:element ref="jptmk:MarkCategory" minOccurs="0"/>
+			<xsd:choice maxOccurs="unbounded">
+				<xsd:element ref="tmk:WordMarkSpecification"/>
+				<xsd:element ref="tmk:MarkImageBag"/>
+				<xsd:element ref="jptmk:MarkSoundBag"/>
+				<xsd:element ref="tmk:MarkMultimediaBag"/>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="MarkSoundBag" type="jptmk:MarkSoundBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of sound marks </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="MarkSoundBagType">
+		<xsd:sequence>
+			<xsd:element ref="tmk:MarkSound"/>
+			<xsd:element ref="jptmk:MarkSoundText" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="MarkSoundText" type="xsd:string"/>
+	<xsd:element name="NationalApplicationFilingDateBag" type="jptmk:NationalApplicationFilingDateBagType"/>
+	<xsd:complexType name="NationalApplicationFilingDateBagType">
+		<xsd:sequence>
+			<xsd:element ref="jptmk:NationalApplicationFilingIndicator" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalApplicationFilingDate"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="NationalApplicationFilingIndicator" type="xsd:boolean"/>
+	<xsd:element name="NiceClassNumberText" type="xsd:string"/>
+	<xsd:element name="OptionalMarkDescriptionBag" type="jptmk:OptionalMarkDescriptionBagType"/>
+	<xsd:complexType name="OptionalMarkDescriptionBagType">
+		<xsd:sequence>
+			<xsd:element ref="jptmk:OptionalMarkDescriptionText" minOccurs="0"/>
+			<xsd:element ref="jptmk:OptionalMarkDescriptionTranslationText" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="OptionalMarkDescriptionText" type="xsd:string"/>
+	<xsd:element name="OptionalMarkDescriptionTranslationText" type="xsd:string"/>
+	<xsd:element name="OverlappedOtherApplication" type="xsd:string"/>
+	<xsd:element name="OverlappedOtherApplicationReference" type="xsd:string"/>
+	<xsd:element name="OverlappedOtherRegistration" type="xsd:string"/>
+	<xsd:element name="PlainLanguageDesignationText" type="xsd:string"/>
+	<xsd:element name="Priority" type="jptmk:PriorityType">
+		<xsd:annotation>
+			<xsd:documentation>Priority claimed under the Paris Convention</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="PriorityBag" type="jptmk:PriorityBagType">
+		<xsd:annotation>
+			<xsd:documentation>Collection of priorities</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="PriorityBagType">
+		<xsd:sequence>
+			<xsd:element ref="jptmk:Priority" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PriorityType">
+		<xsd:sequence>
+			<xsd:element ref="com:PriorityCountryCode" minOccurs="0"/>
+			<xsd:element ref="com:ApplicationNumber" minOccurs="0"/>
+			<xsd:element ref="com:PriorityApplicationFilingDate" minOccurs="0"/>
+			<xsd:element ref="com:PriorityHolderName" minOccurs="0"/>
+			<xsd:element ref="com:PriorityStatusCategory" minOccurs="0"/>
+			<xsd:element ref="com:PriorityStatusDate" minOccurs="0"/>
+			<xsd:element ref="com:CommentText" minOccurs="0"/>
+			<xsd:element ref="com:PriorityDocument" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="tmk:PriorityPartialIndicator" minOccurs="0"/>
+			<xsd:element ref="tmk:PriorityPartialGoodsServices" minOccurs="0"/>
+			<xsd:element ref="tmk:PriorityRegistrationNumber" minOccurs="0"/>
+			<xsd:element ref="tmk:PriorityRegistrationDate" minOccurs="0"/>
+			<xsd:element ref="tmk:PriorityRegistrationExpiredDate" minOccurs="0"/>
+			<xsd:element ref="tmk:PriorityRegistrationRenewedDate" minOccurs="0"/>
+			<xsd:element ref="tmk:PriorityRegistrationRenewalExpiredDate" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="Pronunciation" type="xsd:string"/>
+	<xsd:element name="ProtocolDenunciationException" type="jptmk:ArticleType"/>
+	<xsd:element name="Publication" type="jptmk:PublicationType">
+		<xsd:annotation>
+			<xsd:documentation>Data regarding one publication</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="PublicationType">
+		<xsd:sequence>
+			<xsd:element ref="com:PublicationIdentifier" minOccurs="0"/>
+			<xsd:element ref="jptmk:RegistrationNumberKind" minOccurs="0"/>
+			<xsd:element ref="tmk:PublicationSectionCategory" minOccurs="0"/>
+			<xsd:element ref="com:PublicationSubsection" minOccurs="0"/>
+			<xsd:element ref="com:PublicationDate" minOccurs="0"/>
+			<xsd:element ref="com:PublicationPage" minOccurs="0"/>
+			<xsd:element ref="tmk:NationalPublication" minOccurs="0"/>
+			<xsd:element ref="com:IPOfficeCode" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="RecognizableGoodsService" type="jptmk:ArticleType"/>
+	<xsd:element name="RegistrationNumberKind" type="jptmk:RegistrationNumberKindType"/>
+	<xsd:simpleType name="RegistrationNumberKindType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Registration"/>
+			<xsd:enumeration value="Division"/>
+			<xsd:enumeration value="Protection"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="RegistrationRescindException" type="jptmk:ArticleType"/>
+	<xsd:element name="RequestAppealTrialExaminationCategory" type="jptmk:RequestAppealTrialExaminationCategoryType"/>
+	<xsd:simpleType name="RequestAppealTrialExaminationCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Accelerated"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="SimilarGroup" type="jptmk:SimilarGroupType"/>
+	<xsd:element name="SimilarGroupBag" type="jptmk:SimilarGroupBagType"/>
+	<xsd:complexType name="SimilarGroupBagType">
+		<xsd:sequence>
+			<xsd:element ref="jptmk:SimilarGroup"  maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="SimilarGroupClassification" type="xsd:string"/>
+	<xsd:element name="SimilarGroupCode" type="xsd:string"/>
+	<xsd:complexType name="SimilarGroupType">
+		<xsd:sequence>
+			<xsd:element ref="jptmk:SimilarGroupClassification" minOccurs="0"/>
+			<xsd:element ref="jptmk:SimilarGroupCode" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="SpecialApplicationCategory" type="jptmk:SpecialApplicationCategoryType"/>
+	<xsd:simpleType name="SpecialApplicationCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Division">
+			</xsd:enumeration>
+			<xsd:enumeration value="Change">
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="SpecialApplicationIndication" type="jptmk:SpecialApplicationIndicationType"/>
+	<xsd:complexType name="SpecialApplicationIndicationType">
+		<xsd:sequence>
+			<xsd:element ref="jptmk:SpecialApplicationText" minOccurs="0"/>
+			<xsd:element ref="jptmk:SpecialApplicationCategory" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="SpecialApplicationText" type="xsd:string"/>
+	<xsd:element name="SpecialProvisionConcerningApplicationFilingTime" type="jptmk:ArticleType"/>
+	<xsd:element name="SpecialProvisionConcerningOppositionRegistration" type="jptmk:ArticleType"/>
+	<xsd:element name="SpecialTrademark" type="jptmk:SpecialTrademarkType"/>
+	<xsd:simpleType name="SpecialTrademarkType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Special provision trademark"/>
+			<xsd:enumeration value="Overlap trademark"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="ViennaFigureClassificationText" type="xsd:string"/>
+</xsd:schema>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:jpcom="http://www.jpo.go.jp/standards/XMLSchema/ST96/JPCommon" xmlns:com="http://www.wipo.int/standards/XMLSchema/ST96/Common" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.jpo.go.jp/standards/XMLSchema/ST96/JPCommon" elementFormDefault="qualified" attributeFormDefault="qualified" version="V1_0">
+	<xsd:import namespace="http://www.wipo.int/standards/XMLSchema/ST96/Common" schemaLocation="Common_V3_1.xsd"/>
+	<xsd:element name="AgentCategory" type="jpcom:AgentCategoryType"/>
+	<xsd:simpleType name="AgentCategoryType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Representative"/>
+			<xsd:enumeration value="Sub representative"/>
+			<xsd:enumeration value="Designated representative"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="Contact" type="jpcom:ContactType">
+		<xsd:annotation>
+			<xsd:documentation>Data storing contact details (for example: name, address, telephone number, e-mail address, fax number, mobile phone number).   </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="ContactType">
+		<xsd:sequence>
+			<xsd:element ref="jpcom:OriginalLanguageIndicator" minOccurs="0"/>
+			<xsd:choice>
+				<xsd:sequence>
+					<xsd:element ref="com:Name" minOccurs="0"/>
+					<xsd:element ref="com:PostalAddressBag" minOccurs="0"/>
+					<xsd:element ref="com:FaxNumberBag" minOccurs="0"/>
+					<xsd:element ref="com:EmailAddressBag" minOccurs="0"/>
+					<xsd:element ref="com:WebAddressBag" minOccurs="0"/>
+					<xsd:element ref="com:PhoneNumberBag" minOccurs="0"/>
+					<xsd:element ref="com:OtherElectronicAddressBag" minOccurs="0"/>
+				</xsd:sequence>
+				<xsd:element ref="com:ContactText"/>
+			</xsd:choice>
+		</xsd:sequence>
+		<xsd:attribute ref="com:languageCode"/>
+	</xsd:complexType>
+	<xsd:complexType name="LegalEntityType">
+		<xsd:annotation>
+			<xsd:documentation>A container to hold the details about a legal entity</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="com:LegalEntityName" minOccurs="0"/>
+			<xsd:element ref="com:NationalLegalEntityCode" minOccurs="0"/>
+			<xsd:element ref="com:NationalityCode" minOccurs="0"/>
+			<xsd:element ref="com:IncorporationCountryCode" minOccurs="0"/>
+			<xsd:element ref="com:IncorporationState" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="OriginalLanguageIndicator" type="xsd:boolean"/>
+	<xsd:element name="Representative" type="jpcom:RepresentativeType">
+		<xsd:annotation>
+			<xsd:documentation>Data regarding a representative </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="RepresentativeType">
+		<xsd:complexContent>
+			<xsd:extension base="jpcom:LegalEntityType">
+				<xsd:sequence>
+					<xsd:element ref="jpcom:AgentCategory"/>
+					<xsd:element ref="com:RepresentativeCategory" minOccurs="0"/>
+					<xsd:element ref="com:CommentText" minOccurs="0"/>
+					<xsd:element ref="com:Version" minOccurs="0"/>
+					<xsd:choice maxOccurs="unbounded">
+						<xsd:element ref="com:PartyIdentifier"/>
+						<xsd:element ref="jpcom:Contact"/>
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:attribute ref="com:operationCategory"/>
+				<xsd:attribute ref="com:sequenceNumber"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>
