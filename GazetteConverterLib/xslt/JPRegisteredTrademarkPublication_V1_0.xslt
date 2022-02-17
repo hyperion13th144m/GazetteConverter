@@ -12,19 +12,14 @@
   <xsl:output method="xml" encoding="utf-8" indent="yes"/>
 
   <xsl:template match="/">
-    <xsl:element name="jptmk:RegisteredTrademarkPublication">
-      <xsl:attribute name="com:ipoVersion">
-        <xsl:value-of select="'JP_V1_0'"/>
-      </xsl:attribute>
-      <xsl:attribute name="com:st96Version">
-        <xsl:value-of select="'V3_1'"/>
-      </xsl:attribute>
-      <xsl:attribute name="com:languageCode">
-        <xsl:value-of select="'ja'"/>
-      </xsl:attribute>
-      
+    <jptmk:RegisteredTrademarkPublication
+      xmlns:com="http://www.wipo.int/standards/XMLSchema/ST96/Common"
+      xmlns:jpcom="http://www.jpo.go.jp/standards/XMLSchema/ST96/JPCommon"
+      xmlns:tmk="http://www.wipo.int/standards/XMLSchema/ST96/Trademark"
+      xmlns:jptmk="http://www.jpo.go.jp/standards/XMLSchema/ST96/JPTrademark"
+      com:ipoVersion="JP_V1_0" com:st96Version="V3_1" com:languageCode="ja">
       <xsl:apply-templates select="TM-REG-GAZ"/>
-    </xsl:element>
+    </jptmk:RegisteredTrademarkPublication>
   </xsl:template>
   
   <xsl:template match="TM-REG-GAZ">
@@ -34,6 +29,37 @@
     <xsl:call-template name="template_012"/>
     <xsl:call-template name="template_031"/>
     <xsl:call-template name="template_032"/>
+    <xsl:call-template name="template_038"/>
+    <xsl:call-template name="template_039"/>
+    <xsl:call-template name="template_040"/>
+    <!--
+    <xsl:call-template name="template_042"/>
+    <xsl:call-template name="template_045"/>
+    <xsl:call-template name="template_048"/>
+    <xsl:call-template name="template_049"/>
+    <xsl:call-template name="template_050"/>
+    <xsl:call-template name="template_056"/>
+    <xsl:call-template name="template_073"/>
+    <xsl:call-template name="template_075"/>
+    <xsl:call-template name="template_077"/>
+    <xsl:call-template name="template_080"/>
+    <xsl:call-template name="template_083"/>
+    <xsl:call-template name="template_086"/>
+    <xsl:call-template name="template_089"/>
+    <xsl:call-template name="template_090"/>
+    <xsl:call-template name="template_091"/>
+    <xsl:call-template name="template_092"/>
+    <xsl:call-template name="template_093"/>
+    <xsl:call-template name="template_094"/>
+    <xsl:call-template name="template_095"/>
+    <xsl:call-template name="template_096"/>
+    <xsl:call-template name="template_097"/>
+    <xsl:call-template name="template_102"/>
+    <xsl:call-template name="template_111"/>
+    <xsl:call-template name="template_112"/>
+    <xsl:call-template name="template_113"/>
+    -->
+    <xsl:call-template name="template_117"/>
   </xsl:template>
 
   <!--公報-->
@@ -340,7 +366,45 @@
       </xsl:for-each>
     </xsl:element>
   </xsl:template>
-  
+
+  <!--国際分類版表示-->
+  <xsl:template name="template_038">
+    <xsl:if test="string-length(VERSION-OF-NICE-CLASS/@VERSION) &gt; 0">
+      <xsl:element name="com:ClassificationVersion">
+        <xsl:value-of select="VERSION-OF-NICE-CLASS/@VERSION"/>
+      </xsl:element>
+    </xsl:if>
+  </xsl:template>
+
+  <!--国際分類-->
+  <xsl:template name="template_039">
+    <xsl:if test="string-length(NICE-CLASS) &gt; 0">
+      <xsl:element name="jptmk:NiceClassNumberText">
+        <xsl:value-of select="NICE-CLASS"/>
+      </xsl:element>
+    </xsl:if>
+  </xsl:template>
+
+  <!--出願番号グループ/出願番号-->
+  <xsl:template name="template_040">
+    <xsl:if test="string-length(APPLICATION-NUMBER) &gt; 0">
+      <xsl:element name="com:ApplicationNumber">
+        <xsl:element name="com:ApplicationNumberText">
+          <xsl:value-of select="APPLICATION-NUMBER"/>
+        </xsl:element>
+      </xsl:element>
+    </xsl:if>
+  </xsl:template>
+
+  <!--ウィーン分類-->
+  <xsl:template name="template_117">
+    <xsl:if test="string-length(VIENNA-FIGURE-CLASSIFICATION) &gt; 0">
+      <xsl:element name="jptmk:ViennaFigureClassificationText">
+        <xsl:value-of select="VIENNA-FIGURE-CLASSIFICATION"/>
+      </xsl:element>
+    </xsl:if>
+  </xsl:template>  
+
   <xsl:template match="@* | node()">
     <xsl:copy>
       <xsl:apply-templates select="@* | node()"/>
