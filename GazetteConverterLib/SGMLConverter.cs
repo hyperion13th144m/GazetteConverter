@@ -71,7 +71,7 @@ namespace GazetteConverterLib
             var tmType = TMTypeDetector.Detect(xmlDoc);
 
             // サブフォルダ XSLT にある xsltName のパス
-            var xsltPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "xslt", "JPRegisteredTrademarkPublication.xslt");
+            var xsltPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "xslt", "JPRegisteredTrademarkPublication_V1_0.xslt");
             XslCompiledTransform xslt = new XslCompiledTransform();
             xslt.Load(xsltPath);
 

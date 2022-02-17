@@ -18,7 +18,7 @@
     <None Update="test\CHARACTER(6481006).SGM">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="xslt\JPRegisteredTrademarkPublication.xslt">
+    <None Update="xslt\JPRegisteredTrademarkPublication_V1_0.xslt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
