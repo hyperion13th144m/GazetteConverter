@@ -11,6 +11,9 @@
 >
   <xsl:output method="xml" encoding="utf-8" indent="yes"/>
 
+  <!--画像ファイルの命名に用いる-->
+  <xsl:variable name="imagePrefix" select="//TM-REG-GAZ/ImagePrefix"/>
+
   <xsl:template match="/">
     <jptmk:RegisteredTrademarkPublication
       xmlns:com="http://www.wipo.int/standards/XMLSchema/ST96/Common"
@@ -73,7 +76,9 @@
   <!--登録番号-->
   <xsl:template name="template_006">
     <xsl:element name="com:PublicationIdentifier">
-      <xsl:value-of select="REGISTRATION-NUMBER"/>
+      <xsl:call-template name="extract-tm-reg-number">
+        <xsl:with-param name="input" select="REGISTRATION-NUMBER"/>
+      </xsl:call-template>
     </xsl:element>
   </xsl:template>
 
@@ -107,7 +112,9 @@
   <xsl:template name="template_008">
     <xsl:if test="PUBLICATION-DATE">
       <xsl:element name="com:PublicationDate">
-        <xsl:value-of select="PUBLICATION-DATE"/>
+        <xsl:call-template name="extract-tm-date">
+          <xsl:with-param name="input" select="PUBLICATION-DATE"/>
+        </xsl:call-template>
       </xsl:element>
     </xsl:if>
   </xsl:template>
@@ -133,7 +140,9 @@
   <xsl:template name="template_011">
     <xsl:if test="REGISTRATION-DATE">
       <xsl:element name="tmk:NationalMarkRegistrationDate">
-        <xsl:value-of select="REGISTRATION-DATE"/>
+        <xsl:call-template name="extract-tm-date">
+          <xsl:with-param name="input" select="REGISTRATION-DATE"/>
+        </xsl:call-template>
       </xsl:element>
     </xsl:if>
   </xsl:template>
@@ -260,7 +269,7 @@
       <xsl:element name="tmk:MarkImageBag">
         <xsl:element name="tmk:MarkImage">
           <xsl:element name="com:FileName">
-            <xsl:value-of select="./@FILE-ID"/>
+            <xsl:value-of select="concat($imagePrefix, '-', ./@FILE-ID, '.JPG')"/>
           </xsl:element>
           <xsl:element name="com:HeightMeasure">
             <xsl:attribute name="com:measureUnitCode">Mm</xsl:attribute>
@@ -321,7 +330,9 @@
   <xsl:template name="template_031">
     <xsl:if test="string-length(NUMBER-OF-GOODS-SERVICE-CLASS) &gt; 0">
       <xsl:element name="jptmk:GoodsServiceClassNumber">
-        <xsl:value-of select="NUMBER-OF-GOODS-SERVICE-CLASS"/>
+        <xsl:call-template name="zenkaku-to-hankaku">
+          <xsl:with-param name="src" select="NUMBER-OF-GOODS-SERVICE-CLASS"/>
+        </xsl:call-template>
       </xsl:element>
     </xsl:if>
   </xsl:template>
@@ -356,7 +367,9 @@
       <xsl:for-each select="CLASS-OF-GOODS-AND-SERVICE/GOODS-AND-SERVICE-CLASS-GROUP">
         <xsl:element name="jptmk:ClassDescription">
           <xsl:element name="tmk:ClassNumber">
-            <xsl:value-of select="CLASS"/>
+            <xsl:call-template name="extract-tm-class-number">
+              <xsl:with-param name="input" select="CLASS"/>
+            </xsl:call-template>
           </xsl:element>
           <xsl:element name="tmk:GoodsServicesDescriptionText">
             <xsl:value-of select="GOODS-AND-SERVICE"/>
@@ -389,7 +402,9 @@
     <xsl:if test="string-length(APPLICATION-NUMBER) &gt; 0">
       <xsl:element name="com:ApplicationNumber">
         <xsl:element name="com:ApplicationNumberText">
-          <xsl:value-of select="APPLICATION-NUMBER"/>
+          <xsl:call-template name="extract-tm-app-number">
+            <xsl:with-param name="input" select="APPLICATION-NUMBER"/>
+          </xsl:call-template>
         </xsl:element>
       </xsl:element>
     </xsl:if>
@@ -406,7 +421,9 @@
         <xsl:element name="jptmk:NationalApplicationFilingIndicator">true</xsl:element>
       </xsl:if>
       <xsl:element name="tmk:NationalApplicationFilingDate">
-        <xsl:value-of select="FILING-DATE"/>
+        <xsl:call-template name="extract-tm-date">
+          <xsl:with-param name="input" select="FILING-DATE"/>
+        </xsl:call-template>
       </xsl:element>
     </xsl:element>
   </xsl:template>
@@ -445,7 +462,9 @@
   <xsl:template name="template_049">
     <xsl:if test="count(APPEAL-DATE) &gt; 0">
       <xsl:element name="jptmk:AppealDate">
-        <xsl:value-of select="APPEAL-DATE"/>
+        <xsl:call-template name="extract-tm-date">
+          <xsl:with-param name="input" select="APPEAL-DATE"/>
+        </xsl:call-template>
       </xsl:element>
     </xsl:if>
   </xsl:template>
@@ -465,7 +484,9 @@
               </xsl:element>
             </xsl:element>
             <xsl:element name="com:PriorityApplicationFilingDate">
-              <xsl:value-of select="FILING-DATE"/>
+              <xsl:call-template name="extract-tm-date">
+                <xsl:with-param name="input" select="FILING-DATE"/>
+              </xsl:call-template>
             </xsl:element>
           </xsl:element>
         </xsl:for-each>
@@ -486,7 +507,9 @@
     <xsl:for-each select="RIGHT-HOLDER-GROUP/RIGHT-HOLDER">
       <xsl:element name="jptmk:Holder">
         <xsl:element name="com:PartyIdentifier">
-          <xsl:value-of select="IDENTIFICATION-NUMBER"/>        
+          <xsl:call-template name="zenkaku-to-hankaku">
+            <xsl:with-param name="src" select="IDENTIFICATION-NUMBER"/>
+          </xsl:call-template>
         </xsl:element>
         <xsl:element name="jpcom:Contact">
           <xsl:choose>
@@ -564,7 +587,9 @@
           </xsl:choose>
         </xsl:element>
         <xsl:element name="com:PartyIdentifier">
-          <xsl:value-of select="IDENTIFICATION-NUMBER"/>
+          <xsl:call-template name="zenkaku-to-hankaku">
+            <xsl:with-param name="src" select="IDENTIFICATION-NUMBER"/>
+          </xsl:call-template>
         </xsl:element>
         <xsl:element name="jpcom:Contact">
           <xsl:element name="com:Name">
@@ -792,14 +817,17 @@
         <xsl:for-each select="SIMILAR-GROUP-CODE-GROUP/SIMILAR-GROUP">
           <xsl:element name="jptmk:SimilarGroup">
             <xsl:element name="jptmk:SimilarGroupClassification">
-              <xsl:value-of select="SIMILAR-GROUP-CLASSIFICATION"/>
+              <xsl:call-template name="extract-tm-class-number">
+                <xsl:with-param name="input" select="SIMILAR-GROUP-CLASSIFICATION"/>
+              </xsl:call-template>
             </xsl:element>
             <xsl:element name="jptmk:SimilarGroupCode">
-              <xsl:value-of select="SIMILAR-GROUP-CODE"/>
+              <xsl:call-template name="zenkaku-to-hankaku">
+                <xsl:with-param name="src" select="SIMILAR-GROUP-CODE"/>
+              </xsl:call-template>
             </xsl:element>
           </xsl:element>
         </xsl:for-each>
-        <xsl:value-of select="VIENNA-FIGURE-CLASSIFICATION"/>
       </xsl:element>
     </xsl:if>
   </xsl:template>  
@@ -808,10 +836,117 @@
   <xsl:template name="template_117">
     <xsl:if test="string-length(VIENNA-FIGURE-CLASSIFICATION) &gt; 0">
       <xsl:element name="jptmk:ViennaFigureClassificationText">
-        <xsl:value-of select="VIENNA-FIGURE-CLASSIFICATION"/>
+        <xsl:call-template name="zenkaku-to-hankaku">
+          <xsl:with-param name="src" select="VIENNA-FIGURE-CLASSIFICATION"/>
+        </xsl:call-template>
       </xsl:element>
     </xsl:if>
   </xsl:template>  
+
+  <!--日付を取り出す
+    from: '平成２５年６月１８日（２０１３．６．１８）'
+    to:   '2013-06-18'  -->
+  <xsl:template name="extract-tm-date">
+    <xsl:param name="input"/>
+
+    <!--全角を半角に、括弧内の文字列を取得する-->
+    <xsl:variable name="tmp">
+      <xsl:call-template name="zenhan-bracket">
+        <xsl:with-param name="src" select="$input"/>
+      </xsl:call-template>
+    </xsl:variable>
+
+    <!--中間の－を除去する。-->
+    <xsl:variable name="year" select="substring-before($tmp, '.')"/>
+    <xsl:variable name="md" select="substring-after($tmp, '.')"/>
+    <xsl:variable name="month" select="substring-before($md, '.')"/>
+    <xsl:variable name="day"  select="substring-after($md, '.')"/>
+    <xsl:value-of select="concat($year, '-', format-number($month, '00'), '-', format-number($day, '00'))"/>
+  </xsl:template>
+  
+  <!--登録番号を取り出す
+    from: '商標登録第９４８１００６号（Ｔ９４８１００６）'
+    to:   '9481006'  -->
+  <xsl:template name="extract-tm-reg-number">
+    <xsl:param name="input"/>
+
+    <!--全角を半角に、括弧内の文字列を取得する-->
+    <xsl:variable name="tmp">
+      <xsl:call-template name="zenhan-bracket">
+        <xsl:with-param name="src" select="$input"/>
+      </xsl:call-template>
+    </xsl:variable>
+    
+    <!--先頭のTを除去する-->
+    <xsl:value-of select="substring-after($tmp, 'T')"/>
+  </xsl:template>
+
+  <!--出願番号を取り出す
+    from: '商願２０２１－１２２７３８（Ｔ２０２１－１２２７３８）'
+    to:   '2021-122738'  -->
+  <xsl:template name="extract-tm-app-number">
+    <xsl:param name="input"/>
+    <xsl:variable name="tmp">
+      <xsl:call-template name="extract-tm-reg-number">
+        <xsl:with-param name="input" select="$input"/>
+      </xsl:call-template>
+    </xsl:variable>
+
+    <!--中間の－を除去する。-->
+    <xsl:variable name="year" select="substring-before($tmp, '-')"/>
+    <xsl:variable name="seq"  select="substring-after($tmp, '-')"/>
+    <xsl:value-of select="concat($year, format-number($seq, '000000'))"/>
+  </xsl:template>
+
+  
+  <!--商品・役務の区分を取り出す
+    from: '第２類'
+    to:   '2'  -->
+  <xsl:template name="extract-tm-class-number">
+    <xsl:param name="input"/>
+    
+    <!--全角を半角にする-->
+    <xsl:variable name="tmp1">
+      <xsl:call-template name="zenkaku-to-hankaku">
+        <xsl:with-param name="src" select="$input"/>
+      </xsl:call-template>
+    </xsl:variable>
+
+    <xsl:variable name="tmp2" select="substring-after($tmp1, '第')"/>
+    <xsl:value-of select="substring-before($tmp2, '類')"/>
+  </xsl:template>
+
+  
+  <!--全角を半角にして括弧内の文字を取り出す-->
+  <xsl:template name="zenhan-bracket">
+    <xsl:param name="src"/>
+    <!--全角を半角にする-->
+    <xsl:variable name="tmp1">
+      <xsl:call-template name="zenkaku-to-hankaku">
+        <xsl:with-param name="src" select="$src"/>
+      </xsl:call-template>
+    </xsl:variable>
+
+    <!--括弧内の文字列を抜き出す-->
+    <xsl:call-template name="extract-from-bracket">
+      <xsl:with-param name="src" select="$tmp1"/>
+    </xsl:call-template>
+  </xsl:template>
+
+  <!--全角英数字記号を半角数字に変換する-->
+  <xsl:template name="zenkaku-to-hankaku">
+    <xsl:param name="src"/>
+    <xsl:value-of select="translate($src,
+      'ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ０１２３４５６７８９－／（）．、：；',
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-/().,:;')"/>
+  </xsl:template>
+  
+  <!--括弧内の文字列を抜き出す-->
+  <xsl:template name="extract-from-bracket">
+    <xsl:param name="src"/>
+    <xsl:variable name="s" select="substring-after($src, '(')"/>
+    <xsl:value-of select="substring-before($s, ')')"/>
+  </xsl:template>
 
   <xsl:template match="@* | node()">
     <xsl:copy>

@@ -21,6 +21,7 @@ namespace GazetteConverterLib
     public interface ISGMLConverter
     {
         public void Convert(string srcPath, string dstPath);
+        public void AddImagePrefix(string prefix);
     }
 
     /// <summary>
@@ -47,6 +48,7 @@ namespace GazetteConverterLib
     class TrademarkConverter : ISGMLConverter
     {
         SGMLFixer fixer;
+        string imagePrefix;
 
         public TrademarkConverter(SGMLFixer fixer)
         {
@@ -69,6 +71,11 @@ namespace GazetteConverterLib
             var xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(sgml);
             var tmType = TMTypeDetector.Detect(xmlDoc);
+            if (imagePrefix != null)
+            {
+                AddImagePrefixTag(xmlDoc);
+            }
+            sgml = xmlDoc.OuterXml;
 
             // サブフォルダ XSLT にある xsltName のパス
             var xsltPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "xslt", "JPRegisteredTrademarkPublication_V1_0.xslt");
@@ -86,6 +93,19 @@ namespace GazetteConverterLib
                 xslt.Transform(xr, null, outStream); ;
             }
         }
+
+        public void AddImagePrefix(string prefix)
+        {
+            imagePrefix = prefix;
+        }
+
+        private void AddImagePrefixTag(XmlDocument document)
+        {
+            XmlElement xmlRoot = document.DocumentElement;
+            XmlElement element = document.CreateElement("ImagePrefix");
+            element.InnerText = imagePrefix;
+            xmlRoot.AppendChild(element);
+        }
     }
 
 
@@ -94,6 +114,7 @@ namespace GazetteConverterLib
         public void Convert(string srcPath, string dstPath)
         {
         }
+        public void AddImagePrefix(string prefix) { }
     }
 
     enum TMType
@@ -164,6 +185,7 @@ namespace GazetteConverterLib
             "image",
             "ATTORNEY-RIGHT",
             "OBJECT-APPLICATION",
+            "standard-character-indication",
             "regional-trademark-indication",
             "collective-trademark-indication",
             "version-of-nice-class",
@@ -172,10 +194,18 @@ namespace GazetteConverterLib
             "td-trademark-indication",
             "td-defensive-mark-indication",
             "sound-trademark-indication",
+            "sound-defensive-mark-indication",
             "color-trademark-indication",
+            "color-defensive-mark-indication",
             "position-trademark-indication",
-            "standard-character-indication",
-            "motion-trademark-indication",};
+            "position-defensive-mark-indication",
+            "hologram-trademark-indication",
+            "hologram-defensive-mark-indication",
+            "motion-trademark-indication",
+            "motion-defensive-mark-indication",
+            "other-trademark-indication",
+            "other-defensive-mark-indication",
+        };
 
         public TMFixer()
         {
